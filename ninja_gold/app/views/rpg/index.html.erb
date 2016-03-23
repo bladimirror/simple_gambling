@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title> Ninja Gold </title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="row">
+			<!--GOLD COUNT-->
+			  <div class="gold_count">
+			  	<h2 class="jumbotron01"> Gold |<%= session[:gold] %>| </h2>
+			 	 <form action="/new_game">
+						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+						<input class="btn btn-primary" type='submit' value='New Game' />
+				</form>
+			  </div>
+			  <!--RESULTS TABLE-->
+			  <div class='gold_count'>
+				<table class="table table-hover">
+					<thead>
+						<p class="lead"> Activities </p>
+					</thead>
+					<% session[:activity].reverse_each do |get_element| %>
+						<tbody>
+							<td> <%= get_element %> </td>
+						</tbody>
+					<% end %>
+				</table>
+			   </div>
+			<!--FARM-->
+			<div class=<%= session[:div_color_farm] %> >
+				<h1 class="jumbotron01">Farm</h1>
+				<p class="lead">Earns 10-20 Golds</p>
+				<form class="navbar-form navbar-center" action="/farm">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input class="btn btn-primary" type='submit' value='Get Gold' />
+				</form>
+			</div>
+			<!--CAVE-->
+			<div class=<%= session[:div_color_cave] %> >
+				<h1 class="jumbotron01">Cave</h1>
+				<p class="lead">Earns 5-10 Golds</p>
+				<form class="navbar-form navbar-center" action="/cave">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input class="btn btn-primary" type='submit' value='Get Gold' />
+				</form>
+			</div>
+			<!--HOUSE-->
+			<div class=<%= session[:div_color_house] %> >
+				<h1 class="jumbotron01">House</h1>
+				<p class="lead">Earns 2-5 Golds</p>
+				<form class="navbar-form navbar-center" action="/house">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input class="btn btn-primary" type='submit' value='Get Gold' />
+				</form>
+			</div>
+			<!--CASINO-->
+			<div class=<%= session[:div_color_casino] %> >
+				<h1 class="jumbotron01">Casino</h1>
+				<p class="lead">Earns/Take 0-50 Golds</p>
+				<form class="navbar-form navbar-center" action="/casino">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input class="btn btn-primary" type='submit' value='Get Gold' />
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
